@@ -1,0 +1,1516 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/8/2025 9:26:14 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-28RB1MD"
+  DTS:CreatorName="DESKTOP-28RB1MD\User"
+  DTS:DTSID="{E9C3E39A-AF3F-4224-A2DB-27B80FAC3634}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1008.3"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="PL_DIM_SALESTEAM_SILVER"
+  DTS:PackageType="5"
+  DTS:VersionBuild="101"
+  DTS:VersionGUID="{4036D403-B748-427A-A809-EA3FB04FAF48}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-28RB1MD.US_REGIONAL_SALES_BRONZE]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{0FDE2EC5-67E0-45DF-BD19-1A6A105BB648}"
+      DTS:ObjectName="DESKTOP-28RB1MD.US_REGIONAL_SALES_BRONZE">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[$Project::DB_Bronze]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[$Project::ServerName]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-28RB1MD;Initial Catalog=US_REGIONAL_SALES_BRONZE;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Package-{0FDE2EC5-67E0-45DF-BD19-1A6A105BB648}DESKTOP-28RB1MD.US_REGIONAL_SALES_BRONZE;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-28RB1MD.US_REGIONAL_SALES_GOLD]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C1F9C999-FED0-4379-AF33-011B93056884}"
+      DTS:ObjectName="DESKTOP-28RB1MD.US_REGIONAL_SALES_GOLD">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[$Project::DB_Gold]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[$Project::ServerName]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-28RB1MD;Initial Catalog=US_REGIONAL_SALES_GOLD;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Package-{0FDE2EC5-67E0-45DF-BD19-1A6A105BB648}DESKTOP-28RB1MD.US_REGIONAL_SALES_BRONZE;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-28RB1MD.US_REGIONAL_SALES_SILVER]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{64B2C329-4FA5-4CD7-8AA3-AE2CB1208C3D}"
+      DTS:ObjectName="DESKTOP-28RB1MD.US_REGIONAL_SALES_SILVER">
+      <DTS:PropertyExpression
+        DTS:Name="InitialCatalog">@[$Project::DB_Silver]</DTS:PropertyExpression>
+      <DTS:PropertyExpression
+        DTS:Name="ServerName">@[$Project::ServerName]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-28RB1MD;Initial Catalog=US_REGIONAL_SALES_SILVER;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Package-{0FDE2EC5-67E0-45DF-BD19-1A6A105BB648}DESKTOP-28RB1MD.US_REGIONAL_SALES_BRONZE;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{41CD7057-4B04-4A22-9B14-721E47A5DB26}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=D:\สมัครงาน\KPMG\US_Regional_Sales_Data.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{47D59314-B335-428F-A38B-4D246FB3A032}"
+      DTS:ObjectName="Desc">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">Transform and Load data from bronze to silver</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{93DA426D-134F-409D-963C-F0A50087BA1B}"
+      DTS:ObjectName="Source">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">Bronze</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{C0DD8741-C9A4-41FA-B40B-11FFB6C350FE}"
+      DTS:ObjectName="TargetTable">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">DIM_SALESTEAM</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{82B4D189-B4AD-4732-8867-9E49011261E6}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="BatchID">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4F7B6A70-FCEC-479F-9309-EE658D0EE16C}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RecordInserted">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\INSERT"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{A1977D01-315F-409D-9F80-A7957031E6C0}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="INSERT"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\INSERT\Bronze"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Bronze"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable">$Package::TargetTable</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">1</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\INSERT\Bronze.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-28RB1MD.US_REGIONAL_SALES_BRONZE]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-28RB1MD.US_REGIONAL_SALES_BRONZE]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\INSERT\Bronze.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INSERT\Bronze.Outputs[OLE DB Source Output].Columns[BatchDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\INSERT\Bronze.Outputs[OLE DB Source Output].ExternalColumns[BatchDate]"
+                      lineageId="Package\INSERT\Bronze.Outputs[OLE DB Source Output].Columns[BatchDate]"
+                      name="BatchDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\INSERT\Bronze.Outputs[OLE DB Source Output].Columns[Region]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\INSERT\Bronze.Outputs[OLE DB Source Output].ExternalColumns[Region]"
+                      length="255"
+                      lineageId="Package\INSERT\Bronze.Outputs[OLE DB Source Output].Columns[Region]"
+                      name="Region"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\INSERT\Bronze.Outputs[OLE DB Source Output].Columns[_SalesTeamID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\INSERT\Bronze.Outputs[OLE DB Source Output].ExternalColumns[_SalesTeamID]"
+                      lineageId="Package\INSERT\Bronze.Outputs[OLE DB Source Output].Columns[_SalesTeamID]"
+                      name="_SalesTeamID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\INSERT\Bronze.Outputs[OLE DB Source Output].Columns[Sales Team]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\INSERT\Bronze.Outputs[OLE DB Source Output].ExternalColumns[Sales Team]"
+                      length="255"
+                      lineageId="Package\INSERT\Bronze.Outputs[OLE DB Source Output].Columns[Sales Team]"
+                      name="Sales Team"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\INSERT\Bronze.Outputs[OLE DB Source Output].ExternalColumns[BatchDate]"
+                      dataType="dbTimeStamp"
+                      name="BatchDate" />
+                    <externalMetadataColumn
+                      refId="Package\INSERT\Bronze.Outputs[OLE DB Source Output].ExternalColumns[Region]"
+                      dataType="wstr"
+                      length="50"
+                      name="Region" />
+                    <externalMetadataColumn
+                      refId="Package\INSERT\Bronze.Outputs[OLE DB Source Output].ExternalColumns[_SalesTeamID]"
+                      dataType="i4"
+                      name="_SalesTeamID" />
+                    <externalMetadataColumn
+                      refId="Package\INSERT\Bronze.Outputs[OLE DB Source Output].ExternalColumns[Sales Team]"
+                      dataType="wstr"
+                      length="255"
+                      name="Sales Team" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\INSERT\Bronze.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INSERT\Bronze.Outputs[OLE DB Source Error Output].Columns[_SalesTeamID]"
+                      dataType="i4"
+                      lineageId="Package\INSERT\Bronze.Outputs[OLE DB Source Error Output].Columns[_SalesTeamID]"
+                      name="_SalesTeamID" />
+                    <outputColumn
+                      refId="Package\INSERT\Bronze.Outputs[OLE DB Source Error Output].Columns[Sales Team]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\INSERT\Bronze.Outputs[OLE DB Source Error Output].Columns[Sales Team]"
+                      name="Sales Team" />
+                    <outputColumn
+                      refId="Package\INSERT\Bronze.Outputs[OLE DB Source Error Output].Columns[Region]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\INSERT\Bronze.Outputs[OLE DB Source Error Output].Columns[Region]"
+                      name="Region" />
+                    <outputColumn
+                      refId="Package\INSERT\Bronze.Outputs[OLE DB Source Error Output].Columns[BatchDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\INSERT\Bronze.Outputs[OLE DB Source Error Output].Columns[BatchDate]"
+                      name="BatchDate" />
+                    <outputColumn
+                      refId="Package\INSERT\Bronze.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\INSERT\Bronze.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\INSERT\Bronze.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\INSERT\Bronze.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\INSERT\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\INSERT\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\INSERT\Data Conversion.Inputs[Data Conversion Input].Columns[Region]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Region"
+                      lineageId="Package\INSERT\Bronze.Outputs[OLE DB Source Output].Columns[Region]" />
+                    <inputColumn
+                      refId="Package\INSERT\Data Conversion.Inputs[Data Conversion Input].Columns[_SalesTeamID]"
+                      cachedDataType="i4"
+                      cachedName="_SalesTeamID"
+                      lineageId="Package\INSERT\Bronze.Outputs[OLE DB Source Output].Columns[_SalesTeamID]" />
+                    <inputColumn
+                      refId="Package\INSERT\Data Conversion.Inputs[Data Conversion Input].Columns[Sales Team]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Sales Team"
+                      lineageId="Package\INSERT\Bronze.Outputs[OLE DB Source Output].Columns[Sales Team]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\INSERT\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\INSERT\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INSERT\Data Conversion.Outputs[Data Conversion Output].Columns[SALESTEAM_ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\INSERT\Data Conversion.Outputs[Data Conversion Output].Columns[SALESTEAM_ID]"
+                      name="SALESTEAM_ID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\INSERT\Bronze.Outputs[OLE DB Source Output].Columns[_SalesTeamID]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\INSERT\Data Conversion.Outputs[Data Conversion Output].Columns[SALESTEAM_NAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\INSERT\Data Conversion.Outputs[Data Conversion Output].Columns[SALESTEAM_NAME]"
+                      name="SALESTEAM_NAME"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\INSERT\Bronze.Outputs[OLE DB Source Output].Columns[Sales Team]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\INSERT\Data Conversion.Outputs[Data Conversion Output].Columns[REGION]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\INSERT\Data Conversion.Outputs[Data Conversion Output].Columns[REGION]"
+                      name="REGION"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\INSERT\Bronze.Outputs[OLE DB Source Output].Columns[Region]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\INSERT\Data Conversion.Outputs[Data Conversion Output].Columns[BatchID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\INSERT\Data Conversion.Outputs[Data Conversion Output].Columns[BatchID]"
+                      name="BatchID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\INSERT\Bronze.Outputs[OLE DB Source Output].Columns[Sales Team]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\INSERT\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\INSERT\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INSERT\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\INSERT\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\INSERT\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\INSERT\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\INSERT\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\INSERT\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\INSERT\Derived Column.Inputs[Derived Column Input].Columns[BatchID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="BatchID"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\INSERT\Data Conversion.Outputs[Data Conversion Output].Columns[BatchID]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACE]([REPLACE](@[User::BatchID],"{",""),"}","")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(REPLACE(@[User::BatchID],"{",""),"}","")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\INSERT\Derived Column.Inputs[Derived Column Input].Columns[SALESTEAM_NAME]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="SALESTEAM_NAME"
+                      lineageId="Package\INSERT\Data Conversion.Outputs[Data Conversion Output].Columns[SALESTEAM_NAME]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\INSERT\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\INSERT\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INSERT\Derived Column.Outputs[Derived Column Output].Columns[SALESTEAM_FIRSTNAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\INSERT\Derived Column.Outputs[Derived Column Output].Columns[SALESTEAM_FIRSTNAME]"
+                      name="SALESTEAM_FIRSTNAME"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[SUBSTRING](#{Package\INSERT\Data Conversion.Outputs[Data Conversion Output].Columns[SALESTEAM_NAME]},1,[FINDSTRING](#{Package\INSERT\Data Conversion.Outputs[Data Conversion Output].Columns[SALESTEAM_NAME]}," ",1) - 1)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">SUBSTRING(SALESTEAM_NAME,1,FINDSTRING(SALESTEAM_NAME," ",1) - 1)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\INSERT\Derived Column.Outputs[Derived Column Output].Columns[SALESTEAM_LASTNAME]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="100"
+                      lineageId="Package\INSERT\Derived Column.Outputs[Derived Column Output].Columns[SALESTEAM_LASTNAME]"
+                      name="SALESTEAM_LASTNAME"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[SUBSTRING](#{Package\INSERT\Data Conversion.Outputs[Data Conversion Output].Columns[SALESTEAM_NAME]},[FINDSTRING](#{Package\INSERT\Data Conversion.Outputs[Data Conversion Output].Columns[SALESTEAM_NAME]}," ",1) + 1,100)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">SUBSTRING(SALESTEAM_NAME,FINDSTRING(SALESTEAM_NAME," ",1) + 1,100)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\INSERT\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\INSERT\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INSERT\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\INSERT\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\INSERT\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\INSERT\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\INSERT\Row Count"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Count">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::RecordInserted</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\INSERT\Row Count.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\INSERT\Row Count.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\INSERT\Row Count.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\INSERT\Silver"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Silver"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DIM_SALESTEAM]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable">$Package::TargetTable</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">4</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\INSERT\Silver.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-28RB1MD.US_REGIONAL_SALES_SILVER]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-28RB1MD.US_REGIONAL_SALES_SILVER]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\INSERT\Silver.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\INSERT\Silver.Inputs[OLE DB Destination Input].Columns[BatchID]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="BatchID"
+                      externalMetadataColumnId="Package\INSERT\Silver.Inputs[OLE DB Destination Input].ExternalColumns[BatchID]"
+                      lineageId="Package\INSERT\Data Conversion.Outputs[Data Conversion Output].Columns[BatchID]" />
+                    <inputColumn
+                      refId="Package\INSERT\Silver.Inputs[OLE DB Destination Input].Columns[Region]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Region"
+                      externalMetadataColumnId="Package\INSERT\Silver.Inputs[OLE DB Destination Input].ExternalColumns[REGION]"
+                      lineageId="Package\INSERT\Bronze.Outputs[OLE DB Source Output].Columns[Region]" />
+                    <inputColumn
+                      refId="Package\INSERT\Silver.Inputs[OLE DB Destination Input].Columns[_SalesTeamID]"
+                      cachedDataType="i4"
+                      cachedName="_SalesTeamID"
+                      externalMetadataColumnId="Package\INSERT\Silver.Inputs[OLE DB Destination Input].ExternalColumns[SALESTEAM_ID]"
+                      lineageId="Package\INSERT\Bronze.Outputs[OLE DB Source Output].Columns[_SalesTeamID]" />
+                    <inputColumn
+                      refId="Package\INSERT\Silver.Inputs[OLE DB Destination Input].Columns[Sales Team]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Sales Team"
+                      externalMetadataColumnId="Package\INSERT\Silver.Inputs[OLE DB Destination Input].ExternalColumns[SALESTEAM_NAME]"
+                      lineageId="Package\INSERT\Bronze.Outputs[OLE DB Source Output].Columns[Sales Team]" />
+                    <inputColumn
+                      refId="Package\INSERT\Silver.Inputs[OLE DB Destination Input].Columns[SALESTEAM_FIRSTNAME]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="SALESTEAM_FIRSTNAME"
+                      externalMetadataColumnId="Package\INSERT\Silver.Inputs[OLE DB Destination Input].ExternalColumns[SALESTEAM_FIRSTNAME]"
+                      lineageId="Package\INSERT\Derived Column.Outputs[Derived Column Output].Columns[SALESTEAM_FIRSTNAME]" />
+                    <inputColumn
+                      refId="Package\INSERT\Silver.Inputs[OLE DB Destination Input].Columns[SALESTEAM_LASTNAME]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="SALESTEAM_LASTNAME"
+                      externalMetadataColumnId="Package\INSERT\Silver.Inputs[OLE DB Destination Input].ExternalColumns[SALESTEAM_LASTNAME]"
+                      lineageId="Package\INSERT\Derived Column.Outputs[Derived Column Output].Columns[SALESTEAM_LASTNAME]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\INSERT\Silver.Inputs[OLE DB Destination Input].ExternalColumns[BatchID]"
+                      dataType="wstr"
+                      length="255"
+                      name="BatchID" />
+                    <externalMetadataColumn
+                      refId="Package\INSERT\Silver.Inputs[OLE DB Destination Input].ExternalColumns[REGION]"
+                      dataType="wstr"
+                      length="50"
+                      name="REGION" />
+                    <externalMetadataColumn
+                      refId="Package\INSERT\Silver.Inputs[OLE DB Destination Input].ExternalColumns[SALESTEAM_ID]"
+                      dataType="i4"
+                      name="SALESTEAM_ID" />
+                    <externalMetadataColumn
+                      refId="Package\INSERT\Silver.Inputs[OLE DB Destination Input].ExternalColumns[SALESTEAM_NAME]"
+                      dataType="wstr"
+                      length="255"
+                      name="SALESTEAM_NAME" />
+                    <externalMetadataColumn
+                      refId="Package\INSERT\Silver.Inputs[OLE DB Destination Input].ExternalColumns[SALESTEAM_FIRSTNAME]"
+                      dataType="wstr"
+                      length="255"
+                      name="SALESTEAM_FIRSTNAME" />
+                    <externalMetadataColumn
+                      refId="Package\INSERT\Silver.Inputs[OLE DB Destination Input].ExternalColumns[SALESTEAM_LASTNAME]"
+                      dataType="wstr"
+                      length="255"
+                      name="SALESTEAM_LASTNAME" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\INSERT\Silver.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\INSERT\Silver.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\INSERT\Silver.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\INSERT\Silver.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\INSERT\Silver.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\INSERT\Silver.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\INSERT.Paths[Data Conversion Output]"
+              endId="Package\INSERT\Row Count.Inputs[Row Count Input 1]"
+              name="Data Conversion Output"
+              startId="Package\INSERT\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\INSERT.Paths[Derived Column Output]"
+              endId="Package\INSERT\Silver.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\INSERT\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\INSERT.Paths[OLE DB Source Output]"
+              endId="Package\INSERT\Data Conversion.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\INSERT\Bronze.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\INSERT.Paths[Row Count Output 1]"
+              endId="Package\INSERT\Derived Column.Inputs[Derived Column Input]"
+              name="Row Count Output 1"
+              startId="Package\INSERT\Row Count.Outputs[Row Count Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Set up Audit"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{FE9AB0C0-4F3C-4DB9-8929-7F1FBD7DC46A}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Set up Audit">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{7599C2BD-14B6-487F-AF54-8B7F79BA78E0}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="RowBefore">
+          <DTS:VariableValue
+            DTS:DataType="3">0</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{5F803A50-6AD3-451E-8E72-DF30848D10A7}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="Variable">
+          <DTS:VariableValue
+            DTS:DataType="3">0</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Set up Audit\Audit Begin"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{83255700-4FBE-45EB-B612-F8F2F30DDB2C}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Audit Begin"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{64B2C329-4FA5-4CD7-8AA3-AE2CB1208C3D}"
+              SQLTask:SqlStatementSource="INSERT INTO [dbo].[audit_log]&#xA;(BatchID, PackageName, SourceName, SourceFileName, TargetTable, Description, RowBefore, StartTime, MachineName, CreatedBy, Status)&#xA;OUTPUT INSERTED.BatchID &#xA;VALUES (?, ?, ?, ?, ?, ?, ?, DATEADD(HOUR, 7, GETUTCDATE()), ?, ?, 'Failed')&#xA;"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::BatchID" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="System::PackageName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="$Package::Source"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="3"
+                SQLTask:DtsVariableName="$Project::DB_Bronze"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="4"
+                SQLTask:DtsVariableName="$Package::TargetTable"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="5"
+                SQLTask:DtsVariableName="$Package::Desc"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="6"
+                SQLTask:DtsVariableName="User::RowBefore"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="131"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="7"
+                SQLTask:DtsVariableName="System::MachineName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="8"
+                SQLTask:DtsVariableName="System::CreatorName"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Set up Audit\CountRow before Processing"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{10238AE6-2BD5-4C09-9543-E130C07C2B94}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="CountRow before Processing"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{64B2C329-4FA5-4CD7-8AA3-AE2CB1208C3D}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="SELECT COUNT(*) FROM [US_REGIONAL_SALES_SILVER].[dbo].[DIM_SALESTEAM]"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::RowBefore" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Set up Audit.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{B1EB58EB-2AD4-49D0-A086-5966AA93435A}"
+          DTS:From="Package\Set up Audit\CountRow before Processing"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Set up Audit\Audit Begin" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TRUNCATE TABLE"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{F9ACD502-2FC4-44A6-AA83-0B172B2A4A73}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TRUNCATE TABLE"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{64B2C329-4FA5-4CD7-8AA3-AE2CB1208C3D}"
+          SQLTask:SqlStatementSource="EXEC SP_TRUNCATETABLE_SILVER ?, ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="$Project::Schema"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="$Package::TargetTable"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="130"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update Audit"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{8A788192-3B35-4961-BA0A-21F44F4FEEFA}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update Audit">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{4681BAC7-BFE3-42C2-9E86-33A652C44F19}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="RowAfter">
+          <DTS:VariableValue
+            DTS:DataType="3">0</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Update Audit\Audit End"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{44D7A07F-83CA-4910-9892-86A203F35EA9}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Audit End"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{64B2C329-4FA5-4CD7-8AA3-AE2CB1208C3D}"
+              SQLTask:SqlStatementSource="UPDATE [dbo].[audit_log]&#xA;SET RowAfter = ?, RecordsInserted = ?, EndTime = DATEADD(HOUR, 7, GETUTCDATE()), Status = 'Success', ErrorMessage = ?&#xA;WHERE BatchID = ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="0"
+                SQLTask:DtsVariableName="User::RowAfter"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="131"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="1"
+                SQLTask:DtsVariableName="User::RecordInserted"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="131"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="2"
+                SQLTask:DtsVariableName="System::FailedConfigurations"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="129"
+                SQLTask:ParameterSize="-1" />
+              <SQLTask:ParameterBinding
+                SQLTask:ParameterName="3"
+                SQLTask:DtsVariableName="User::BatchID"
+                SQLTask:ParameterDirection="Input"
+                SQLTask:DataType="130"
+                SQLTask:ParameterSize="-1" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Update Audit\CountRow After Processing"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{1F3F9EBB-194C-473B-A860-968D89DDA48A}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="CountRow After Processing"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{64B2C329-4FA5-4CD7-8AA3-AE2CB1208C3D}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="SELECT COUNT(*) FROM [US_REGIONAL_SALES_SILVER].[dbo].[DIM_SALESTEAM]"
+              SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::RowAfter" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Update Audit.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{7096AF02-B335-4EE9-B9FA-7A3DE8B93D59}"
+          DTS:From="Package\Update Audit\CountRow After Processing"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Update Audit\Audit End" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{E0738AB7-B609-456F-A591-D0E7CEFED7E4}"
+      DTS:From="Package\TRUNCATE TABLE"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\INSERT" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{4FEC23BF-0707-4CAD-9435-C6110C80DB49}"
+      DTS:From="Package\Set up Audit"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\TRUNCATE TABLE" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{1C5745F6-FDE2-462B-9592-DAB7983D8044}"
+      DTS:From="Package\INSERT"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Update Audit" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="119,42"
+          Id="Package\INSERT"
+          TopLeft="504.5,239.5" />
+        <NodeLayout
+          Size="135,42"
+          Id="Package\Set up Audit\Audit Begin"
+          TopLeft="82,104" />
+        <NodeLayout
+          Size="222,42"
+          Id="Package\Set up Audit\CountRow before Processing"
+          TopLeft="5.5,28" />
+        <EdgeLayout
+          Id="Package\Set up Audit.PrecedenceConstraints[Constraint]"
+          TopLeft="116.5,70">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="33,34"
+              Start="0,0"
+              End="33,26.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13"
+                    Point2="0,17"
+                    Point3="4,17" />
+                  <mssgle:LineSegment
+                    End="29,17" />
+                  <mssgle:CubicBezierSegment
+                    Point1="29,17"
+                    Point2="33,17"
+                    Point3="33,21" />
+                  <mssgle:LineSegment
+                    End="33,26.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="285,254"
+          Size="285,297"
+          Id="Package\Set up Audit"
+          TopLeft="84,75" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\TRUNCATE TABLE"
+          TopLeft="424,68" />
+        <NodeLayout
+          Size="135,42"
+          Id="Package\Update Audit\Audit End"
+          TopLeft="37,93" />
+        <NodeLayout
+          Size="222,42"
+          Id="Package\Update Audit\CountRow After Processing"
+          TopLeft="16.5,23" />
+        <EdgeLayout
+          Id="Package\Update Audit.PrecedenceConstraints[Constraint]"
+          TopLeft="127.5,65">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-23,28"
+              Start="0,0"
+              End="-23,20.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,10" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,10"
+                    Point2="0,14"
+                    Point3="-4,14" />
+                  <mssgle:LineSegment
+                    End="-19,14" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-19,14"
+                    Point2="-23,14"
+                    Point3="-23,18" />
+                  <mssgle:LineSegment
+                    End="-23,20.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="304,287"
+          Size="304,330"
+          Id="Package\Update Audit"
+          TopLeft="717,72" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="512.5,110">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="51.5,129.5"
+              Start="0,0"
+              End="51.5,122">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,60.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,60.75"
+                    Point2="0,64.75"
+                    Point3="4,64.75" />
+                  <mssgle:LineSegment
+                    End="47.5,64.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="47.5,64.75"
+                    Point2="51.5,64.75"
+                    Point3="51.5,68.75" />
+                  <mssgle:LineSegment
+                    End="51.5,122" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="369,223.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="55,-134.5"
+              Start="0,0"
+              End="47.5,-134.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="23.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="23.5,0"
+                    Point2="27.5,0"
+                    Point3="27.5,-4" />
+                  <mssgle:LineSegment
+                    End="27.5,-130.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="27.5,-130.5"
+                    Point2="27.5,-134.5"
+                    Point3="31.5,-134.5" />
+                  <mssgle:LineSegment
+                    End="47.5,-134.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="623.5,260.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="93.5,-23.5"
+              Start="0,0"
+              End="86,-23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="42.75,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="42.75,0"
+                    Point2="46.75,0"
+                    Point3="46.75,-4" />
+                  <mssgle:LineSegment
+                    End="46.75,-19.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="46.75,-19.5"
+                    Point2="46.75,-23.5"
+                    Point3="50.75,-23.5" />
+                  <mssgle:LineSegment
+                    End="86,-23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\INSERT">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="158,42"
+          Id="Package\INSERT\Derived Column"
+          TopLeft="580,271" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\INSERT\Data Conversion"
+          TopLeft="347,169" />
+        <NodeLayout
+          Size="107,42"
+          Id="Package\INSERT\Silver"
+          TopLeft="673,408" />
+        <NodeLayout
+          Size="133,42"
+          Id="Package\INSERT\Row Count"
+          TopLeft="314,334" />
+        <NodeLayout
+          Size="114,42"
+          Id="Package\INSERT\Bronze"
+          TopLeft="242.5,71.5" />
+        <EdgeLayout
+          Id="Package\INSERT.Paths[OLE DB Source Output]"
+          TopLeft="299.5,113.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="128,55.5"
+              Start="0,0"
+              End="128,48">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.75"
+                    Point2="0,27.75"
+                    Point3="4,27.75" />
+                  <mssgle:LineSegment
+                    End="124,27.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="124,27.75"
+                    Point2="128,27.75"
+                    Point3="128,31.75" />
+                  <mssgle:LineSegment
+                    End="128,48" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INSERT.Paths[Derived Column Output]"
+          TopLeft="659,313">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="67.5,95"
+              Start="0,0"
+              End="67.5,87.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,43.5"
+                    Point2="0,47.5"
+                    Point3="4,47.5" />
+                  <mssgle:LineSegment
+                    End="63.5,47.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="63.5,47.5"
+                    Point2="67.5,47.5"
+                    Point3="67.5,51.5" />
+                  <mssgle:LineSegment
+                    End="67.5,87.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INSERT.Paths[Data Conversion Output]"
+          TopLeft="427.5,211">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-47,123"
+              Start="0,0"
+              End="-47,115.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,57.5"
+                    Point2="0,61.5"
+                    Point3="-4,61.5" />
+                  <mssgle:LineSegment
+                    End="-43,61.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-43,61.5"
+                    Point2="-47,61.5"
+                    Point3="-47,65.5" />
+                  <mssgle:LineSegment
+                    End="-47,115.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\INSERT.Paths[Row Count Output 1]"
+          TopLeft="447,355">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="133,-63"
+              Start="0,0"
+              End="125.5,-63">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="62.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="62.5,0"
+                    Point2="66.5,0"
+                    Point3="66.5,-4" />
+                  <mssgle:LineSegment
+                    End="66.5,-59" />
+                  <mssgle:CubicBezierSegment
+                    Point1="66.5,-59"
+                    Point2="66.5,-63"
+                    Point3="70.5,-63" />
+                  <mssgle:LineSegment
+                    End="125.5,-63" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\INSERT\Bronze">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\INSERT\Silver">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
